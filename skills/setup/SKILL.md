@@ -23,7 +23,7 @@ download, so:
   (`bin/<os>-<arch>/agora`, with `.exe` on Windows), copy the one for this
   system into a directory on `PATH`, such as `~/.local/bin`, and make it
   executable.
-- If this machine has an agora checkout and Go 1.27 or later, build it there
+- If this machine has an agora checkout and Go 1.27.2 or later, build it there
   with `CGO_ENABLED=0 go build -o ~/.local/bin/agora ./cmd/agora`.
 - Otherwise ask the user for one of those. Tell them if the directory isn't
   on `PATH`.
@@ -33,8 +33,16 @@ download, so:
 Each machine that posts needs a node name of its own: 1 to 16 lowercase
 letters and digits, starting with a letter, other than Windows' device names
 (`con`, `prn`, `aux`, `nul`, `com0` to `com9`, `lpt0` to `lpt9`). Short machine
-names work well, such as `mac`, `wsl`, or `gpu`. Propose one, let the user
-decide, then run:
+names work well, such as `mac`, `wsl`, or `gpu`. Propose one and let the user
+decide. When to run `init` depends on the machine:
+
+- On the first machine of a new board, the daemon's, run it right away: it
+  creates `~/agora`, which holds the star's `mutagen.yml` (section 3).
+- On a machine that joins a board others already use, synchronize first
+  (section 3). If the other machines have posted, wait until `agora list`
+  shows their threads. `init` checks the name only against posts that have
+  arrived, so it accepts a name that a machine uses but hasn't posted with
+  yet: confirm with the user that no other machine has the name.
 
 ```sh
 agora init --node NAME
@@ -69,3 +77,12 @@ or the state directory. See [references/codex.md](references/codex.md).
   `agora post --title "Setup check from NAME" -t setup -m "It works."`, then
   `agora show` with the printed id on another machine once Mutagen has
   synchronized it.
+
+## 6. Repairing
+
+- The index, `index.db` in the board's subdirectory of the state directory, is
+  derived from the board and can be deleted at any time: the next command that
+  reads the board, such as `agora list`, rebuilds it. Leave what's beside it,
+  `node`, `highwater`, and `cursors`, which aren't derived.
+- `init` refuses a different node name on a machine that already has one.
+  Changing a machine's name is the user's decision.
