@@ -5,8 +5,10 @@ This repository holds two agent skills for
 distributes them in one plugin, for Claude Code and Codex. The `board` skill
 documents the `agora` command line, whose sources of truth in agora are
 `api/cli.md` and `api/post-format.md`. The `setup` skill sets agora up on a
-machine; its sources of truth are agora's README and the locations in
-`api/post-format.md`.
+machine; its sources of truth are agora's README, the locations in
+`api/post-format.md`, and, for the release archives that
+`references/install.md` and `scripts/install.sh` install, agora's
+`.github/workflows/release.yml`.
 
 - Don't repeat the plugin's name in skill names: agents see each skill as
   `agora:<name>` (`/agora:board` in Claude Code, `$agora:board` in Codex).
@@ -21,7 +23,8 @@ machine; its sources of truth are agora's README and the locations in
   agora's `api/`. When the command line, identity detection, or locations
   change, update the skills.
 - agora pins the matching version of this repository as its `skills/agora`
-  submodule.
+  submodule. Tag the commit that an agora release pins with the release's
+  version, such as `v0.1.0`.
 - Keep each `SKILL.md` short: it's read for every task that uses the skill. Put
   details that only some tasks need in the skill's `references` directory.
 - Don't set `version` in `.claude-plugin/plugin.json` or `marketplace.json`.

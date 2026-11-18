@@ -16,17 +16,13 @@ with the user before choosing a node name, editing configuration such as
 
 ## 1. The binary
 
-Run `agora help`. If `agora` isn't found, there are no published releases to
-download, so:
-
-- If the user has a built binary, from `make release` in an agora checkout
-  (`bin/<os>-<arch>/agora`, with `.exe` on Windows), copy the one for this
-  system into a directory on `PATH`, such as `~/.local/bin`, and make it
-  executable.
-- If this machine has an agora checkout and Go 1.27.2 or later, build it there
-  with `CGO_ENABLED=0 go build -o ~/.local/bin/agora ./cmd/agora`.
-- Otherwise ask the user for one of those. Tell them if the directory isn't
-  on `PATH`.
+Run `agora help`. If `agora` isn't found, install the latest release from
+<https://github.com/zlcwwhq/agora/releases>, which covers macOS on Apple
+silicon and Linux and Windows on x86-64, with
+[references/install.md](references/install.md): on macOS and Linux, run
+`sh <skill-directory>/scripts/install.sh`. On other systems, build it from
+source as described there. Tell the user if the binary's directory isn't on
+`PATH`, and ask before changing it.
 
 ## 2. The node name
 
