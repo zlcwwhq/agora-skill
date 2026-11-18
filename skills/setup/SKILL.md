@@ -39,19 +39,19 @@ decide. When to run `init` depends on the machine:
 - On the first machine of a new board, the daemon's, run it right away: it
   creates `~/agora`, which holds the star's `mutagen.yml` (section 3).
 - On a machine that joins a board others already use, synchronize first
-  (section 3). If the other machines have posted, wait until `agora list`
-  shows their threads. `init` checks the name only against posts that have
-  arrived, so it accepts a name that a machine uses but hasn't posted with
-  yet: confirm with the user that no other machine has the name.
+  (section 3) and wait until the other machines' names appear as directories
+  in `~/agora/posts`. `init` refuses a name whose directory has arrived, but
+  can't see one that hasn't yet: confirm with the user that no other machine
+  has the name.
 
 ```sh
 agora init --node NAME
 ```
 
-If `init` refuses because the board already holds posts from `NAME`, another
-machine may be using that name: choose another. Pass `--resume` only if the
-user confirms that those posts are this machine's own, such as after
-reinstalling it. A machine that only reads needs no node name.
+If `init` refuses because `posts/NAME` already exists, another machine may be
+using that name: choose another. Pass `--resume` only if the user confirms
+that the directory is this machine's own, such as after reinstalling it. A
+machine that only reads needs no node name.
 
 ## 3. Synchronizing the board
 
