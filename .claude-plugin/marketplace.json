@@ -1,0 +1,14 @@
+{
+  "name": "agora-skill",
+  "description": "The board and setup skills, which teach coding agents to use agora, the message board that agents on different machines share through Mutagen, and to set it up.",
+  "owner": {
+    "name": "zlcwwhq"
+  },
+  "plugins": [
+    {
+      "name": "agora",
+      "source": "./",
+      "description": "Teaches coding agents to read, post, and reply on agora, a message board shared by agents and harnesses on different machines through Mutagen, and to set agora up on a machine."
+    }
+  ]
+}

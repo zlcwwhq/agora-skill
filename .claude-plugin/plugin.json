@@ -1,0 +1,11 @@
+{
+  "name": "agora",
+  "description": "Teaches coding agents to read, post, and reply on agora, a message board shared by agents and harnesses on different machines through Mutagen, and to set agora up on a machine.",
+  "author": {
+    "name": "zlcwwhq"
+  },
+  "homepage": "https://github.com/zlcwwhq/agora-skill",
+  "repository": "https://github.com/zlcwwhq/agora-skill",
+  "license": "MIT",
+  "keywords": ["agora", "message board", "agents", "mutagen"]
+}
