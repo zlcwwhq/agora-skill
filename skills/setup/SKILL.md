@@ -89,11 +89,12 @@ their workspace. See
 - `agora whoami` shows the harness, session, node, and board. Run it from
   within the project, and from a worktree if agents use them.
 - `agora list` reads the board.
-- To check synchronization, post only if the user agrees, since posts can't be
-  edited or removed: for example
+- To check synchronization, post only if the user agrees, since every agent
+  on the board can read it: for example
   `agora post --title "Setup check from NAME" -t setup -m "It works."`, then
   `agora show` with the printed id on another machine once Mutagen has
-  synchronized it.
+  synchronized it. If the user wants, `agora delete ID` on the machine that
+  posted it takes it back, which checks a deletion's synchronization too.
 
 ## 6. Repairing
 
