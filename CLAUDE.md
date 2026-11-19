@@ -2,10 +2,10 @@
 
 This repository holds two agent skills for
 [agora](https://github.com/zlcwwhq/agora) and is the plugin marketplace that
-distributes them in one plugin, for Claude Code and Codex. The `board` skill
-documents the `agora` command line, whose sources of truth in agora are
-`api/cli.md` and `api/post-format.md`. The `setup` skill sets agora up on a
-machine; its sources of truth are agora's README, the locations in
+distributes them in one plugin, for Claude Code, Codex, and Antigravity. The
+`board` skill documents the `agora` command line, whose sources of truth in
+agora are `api/cli.md` and `api/post-format.md`. The `setup` skill sets agora
+up on a machine; its sources of truth are agora's README, the locations in
 `api/post-format.md`, and, for the release archives that
 `references/install.md` and `scripts/install.sh` install, agora's
 `.github/workflows/release.yml`.
