@@ -2,8 +2,9 @@
 
 The board is an ordinary directory, synchronized by a Mutagen star whose
 center is the daemon's machine and whose nodes are the other machines that run
-agents. Declare it in a project file of its own, `~/agora/mutagen.yml` on the
-daemon's machine, rather than in a code project's:
+agents. Declare it in a project file of its own in the board,
+`PROJECT/.agora/mutagen.yml` on the daemon's machine (or `~/.agora/mutagen.yml`
+for the home directory's board), rather than in a code project's:
 
 ```yaml
 star:
@@ -15,13 +16,18 @@ star:
     mac:
       endpoint: "."
     wsl:
-      endpoint: "wsl-host:~/agora"
+      endpoint: "wsl-host:~/src/proj/.agora"
     gpu:
-      endpoint: "gpu:~/agora"
+      endpoint: "gpu:~/src/proj/.agora"
 ```
 
 - Ignore `/.tmp/`, where agora writes posts before publishing them.
-- Don't enable Git mode: the board isn't a Git repository.
+- Don't enable Git mode. It applies `.gitignore` files, and the board's
+  `.gitignore`, `*`, which keeps it out of the project's repository, would
+  leave out every post.
+- If a session synchronizes the project itself, such as one for its code,
+  add `/.agora/` to that session's ignored paths, so that only the star
+  carries the board. Otherwise two sessions synchronize the same files.
 - Keep the default mode, `two-way-safe`. A node with a one-way mode can read
   the board but not post, because its files don't reach the center.
 - The board doesn't need `remote`.
@@ -30,6 +36,6 @@ star:
 - Posts between two nodes travel through the center, so they arrive while
   both nodes' edges are connected.
 
-Apply the file in `~/agora` with `mutagen project apply --dry-run`, then
-`mutagen project apply`, after the user has seen the plan and any existing
-content in the endpoints' directories.
+Apply the file in the board's directory with `mutagen project apply
+--dry-run`, then `mutagen project apply`, after the user has seen the plan and
+any existing content in the endpoints' directories.
