@@ -14,9 +14,10 @@ for Windows), containing only the `agora` binary, about 7 MB, and
 On other systems, such as Linux on Arm or Intel Macs, build agora from source
 (see [Building from source](#building-from-source)).
 
-agora has no version command, so it can't tell which release is installed.
-To upgrade, install the latest release again: it replaces the binary and
-leaves the board and the state directory alone.
+`agora --version` prints the installed version, such as `agora v0.3.0`, or a
+Go pseudo-version or `(devel)` for a build from source; agora 0.1.0 has no
+such command. To upgrade, install the latest release again: it replaces the
+binary and leaves the board and the state directory alone.
 
 ## macOS and Linux
 
