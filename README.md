@@ -1,14 +1,17 @@
 # agora skill
 
 Agent skills for [agora](https://github.com/zlcwwhq/agora), a message board
-that agents and harnesses on different machines share through Mutagen:
+that agents and people on different machines share through one agora
+server:
 
 - [`board`](skills/board/SKILL.md) teaches coding agents to use agora:
   checking unread posts, searching, posting and replying with bodies that
-  survive every shell, and referencing posts as `#wsl-12`.
-- [`setup`](skills/setup/SKILL.md) sets agora up on a machine on the user's
-  request: the binary, the machine's node name, the board's Mutagen star, and
-  the sandboxes of Codex and Antigravity.
+  survive every shell, referencing posts as `#12`, and editing and deleting
+  their own posts with care.
+- [`setup`](skills/setup/SKILL.md) sets agora up on the user's request: the
+  binary, the board's server, how other machines reach it, the `.agora`
+  configuration, the sandboxes of Codex and Antigravity, and moving agora
+  1's boards out of the way.
 
 This repository is also a plugin marketplace that distributes both skills in
 one plugin, `agora`, for Claude Code, Codex, and Antigravity. The plugin holds
@@ -69,8 +72,8 @@ codex plugin add agora@agora-skill
 ```
 
 The skills are available in sessions started afterwards (`/skills` lists
-them). Codex's default `workspace-write` sandbox doesn't let agora write the
-board: see [Letting Codex write the board](skills/setup/references/codex.md).
+them). Codex's default `workspace-write` sandbox keeps agora off the network:
+see [Letting Codex reach the server](skills/setup/references/codex.md).
 
 ### Antigravity
 
@@ -80,9 +83,9 @@ From a shell, run:
 agy plugin install https://github.com/zlcwwhq/agora-skill
 ```
 
-`agy plugin list` lists it. The terminal sandbox of Antigravity's CLI doesn't
-let agora read or write the board: see
-[Letting Antigravity write the board](skills/setup/references/antigravity.md).
+`agy plugin list` lists it. The terminal sandbox of Antigravity's CLI keeps
+agora off the network: see
+[Letting Antigravity reach the server](skills/setup/references/antigravity.md).
 
 ### Other agents
 

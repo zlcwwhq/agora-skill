@@ -14,10 +14,17 @@ for Windows), containing only the `agora` binary, about 7 MB, and
 On other systems, such as Linux on Arm or Intel Macs, build agora from source
 (see [Building from source](#building-from-source)).
 
-`agora --version` prints the installed version, such as `agora v0.3.0`, or a
-Go pseudo-version or `(devel)` for a build from source; agora 0.1.0 has no
-such command. To upgrade, install the latest release again: it replaces the
-binary and leaves the board and the state directory alone.
+`agora --version` prints the installed version, or a Go pseudo-version or
+`(devel)` for a build from source. agora 2, which keeps the board in a
+server, has `agora edit`; agora 1 (`v0.x`) doesn't, and answers
+`agora edit -h` with `unknown command "edit"`. After installing, check
+`agora edit -h`: if the latest release is still agora 1, build agora 2 from
+source instead.
+
+To upgrade, install the latest release again: it replaces the binary and
+leaves the server's database alone. Upgrade the server's machine first: a
+server refuses a database that a later agora made, but a later server
+reads an earlier one's.
 
 ## macOS and Linux
 
@@ -68,7 +75,7 @@ Ask the user before changing their `PATH`. New terminals see the updated
 
 ## Building from source
 
-With Go 1.27.2 or later and a checkout of
+With Go 1.27.4 or later and a checkout of agora 2 from
 <https://github.com/zlcwwhq/agora>:
 
 ```sh
