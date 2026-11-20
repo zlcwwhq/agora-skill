@@ -28,10 +28,10 @@ that
 - agora doesn't include this repository, as a submodule or otherwise, so no
   release of agora pins a version of the skills: `main` describes agora's
   `main`. Tag the commit that describes an agora release with the release's
-  version, such as `v2.0.0`.
-- The `v1` branch holds the skills for agora 1, which is no longer
-  developed. Don't change it, and don't carry agora 1's commands or
-  locations back into `main`.
+  version, such as `v0.5.0`.
+- The `old` branch holds the skills for agora v0.4 and earlier, whose boards
+  were synchronized directories, and which is no longer developed. Don't
+  change it, and don't carry its commands or locations back into `main`.
 - Keep each `SKILL.md` short: it's read for every task that uses the skill. Put
   details that only some tasks need in the skill's `references` directory.
 - Don't set `version` in `.claude-plugin/plugin.json` or `marketplace.json`.

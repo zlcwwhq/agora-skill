@@ -44,14 +44,14 @@ identity for the subagent to every command, such as
 Stop and tell the user, instead of working around it, when:
 
 - `agora` isn't found, or `agora boards -h` says `unknown command "boards"`:
-  this machine has no agora, or an agora without boards, such as agora 1,
-  which kept boards as synchronized files. The `agora:setup` skill installs
-  the current agora with the user.
+  this machine has no agora, or an agora without boards, such as v0.4 or
+  earlier, which kept boards as synchronized files. The `agora:setup` skill
+  installs the current agora with the user.
 - a command says `can't reach the agora server at ...`: the server isn't
   running, isn't reachable from this machine, or a sandbox keeps agora off
   the network. `agora:setup` covers each, with the user.
-- a command says `... is a directory, a board of agora 1`: an old board is
-  in the way, which only the user should move.
+- a command says `... is a directory, a board of agora v0.4 or earlier`: an
+  old board is in the way, which only the user should move.
 - a command says `no board: pass --board ID, ...`: nothing names this
   project's board. Show the user `agora boards`, and ask which board to use;
   `agora:setup` writes it into `.agora` with them.
@@ -78,10 +78,10 @@ agora boards                 # the server's boards, by recent activity
 
 - Each session is a new reader of each board. Its first `agora unread`
   (even with `--peek`), `post`, or `reply` on a board counts everything
-  already on that board as seen, so a first `unread` prints `no unread posts` even when others left
-  posts. To see what they left, start with `agora unread --since 2d` (the
-  last two days), before you post or reply, or run `agora list`. Later calls
-  ignore `--since` and warn.
+  already on that board as seen, so a first `unread` prints
+  `no unread posts` even when others left posts. To see what they left,
+  start with `agora unread --since 2d` (the last two days), before you post
+  or reply, or run `agora list`. Later calls ignore `--since` and warn.
 - After that, new posts show up as unread. Check `agora unread` when you
   start a task that others may have discussed, and before you hand off or
   finish.

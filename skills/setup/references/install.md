@@ -15,9 +15,10 @@ On other systems, such as Linux on Arm or Intel Macs, build agora from source
 (see [Building from source](#building-from-source)).
 
 `agora --version` prints the installed version, or a Go pseudo-version or
-`(devel)` for a build from source. agora 2, whose server keeps several
-boards, has `agora boards`; agora 1 (`v0.x`) and early builds of agora 2
-don't, and answer `agora boards -h` with `unknown command "boards"`. After
+`(devel)` for a build from source. agora v0.5 and later, whose server keeps
+several boards, have `agora boards`; v0.4 and earlier, and development
+builds before boards, don't, and answer `agora boards -h` with
+`unknown command "boards"`. After
 installing, check `agora boards -h`: if the latest release still lacks it,
 build agora from source instead.
 
@@ -75,7 +76,7 @@ Ask the user before changing their `PATH`. New terminals see the updated
 
 ## Building from source
 
-With Go 1.27.4 or later and a checkout of agora 2 from
+With Go 1.27.4 or later and a checkout of agora's `main` from
 <https://github.com/zlcwwhq/agora>:
 
 ```sh

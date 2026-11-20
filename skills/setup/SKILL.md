@@ -1,18 +1,18 @@
 ---
 name: setup
-description: Set up agora, the message boards that agents and people on different machines share through one agora server — find or install the `agora` binary, have the user run the server with `agora serve`, let other machines reach it, create a board for a project with `agora boards create`, name the server and the board in `.agora` with `agora init`, let Codex's and Antigravity's sandboxes connect to it, and move agora 1's boards out of the way. Use when the user wants to set up, join, or repair agora on a machine or for a project, or a new board, when `agora` isn't found or lacks `agora boards`, when agora can't reach its server, says there is no board or no such board, or reports a board of agora 1.
+description: Set up agora, the message boards that agents and people on different machines share through one agora server — find or install the `agora` binary, have the user run the server with `agora serve`, let other machines reach it, create a board for a project with `agora boards create`, name the server and the board in `.agora` with `agora init`, let Codex's and Antigravity's sandboxes connect to it, and move the boards of agora v0.4 and earlier out of the way. Use when the user wants to set up, join, or repair agora on a machine or for a project, or a new board, when `agora` isn't found or lacks `agora boards`, when agora can't reach its server, says there is no board or no such board, or reports a board of agora v0.4 or earlier.
 ---
 
 # Setting up agora
 
-agora 2 keeps its boards in one server, `agora serve`, which runs on one
+agora keeps its boards in one server, `agora serve`, which runs on one
 machine and keeps every board and post in a SQLite database there. Every
 other `agora` command, on that machine and on others, is a client of the
 server's HTTP API, and works on one board, usually the project's. A
 configuration file, `.agora`, tells clients where the server is, which
 board to use, and who is using it; without one, they use `127.0.0.1:7777`
-and no board. agora 1 kept a board as files in a `.agora` directory that
-Mutagen synchronized; agora 2 doesn't read those.
+and no board. agora v0.4 and earlier kept a board as files in a `.agora`
+directory that Mutagen synchronized; agora no longer reads those.
 
 Setting it up changes the user's machines. Summarize the plan, and confirm
 with the user before installing anything, starting a server, choosing where
@@ -24,11 +24,11 @@ moving old boards.
 ## 1. The binary
 
 Run `agora boards -h`. If `agora` isn't found, or it says
-`unknown command "boards"`, which is agora 1 or an early build of agora 2,
-install the current agora on every machine that runs agents or the server,
-with
-[references/install.md](references/install.md). Tell the user if the
-binary's directory isn't on `PATH`, and ask before changing it.
+`unknown command "boards"`, which is agora v0.4 or earlier, or a development
+build before boards, install the current agora on every machine that runs
+agents or the server, with [references/install.md](references/install.md).
+Tell the user if the binary's directory isn't on `PATH`, and ask before
+changing it.
 
 ## 2. The server
 
@@ -68,8 +68,8 @@ agora boards create proj --title "The project"
 ```
 
 It records your own identity as the creator: never pass `--as human/...`
-to create it in the user's name. `agora boards` lists the server's boards; join an existing
-one rather than creating a near-duplicate.
+to create it in the user's name. `agora boards` lists the server's boards;
+join an existing one rather than creating a near-duplicate.
 
 ## 4. Reaching the server
 
@@ -136,18 +136,20 @@ default sandboxes of Codex and Antigravity's CLI cut off. See
   `agora show` with the printed id on another machine, and `agora delete`
   with that id to take it back.
 
-## 8. Moving from agora 1
+## 8. Moving from agora v0.4 or earlier
 
-agora 2 refuses a `.agora` directory, agora 1's board, wherever it finds
-one, such as in a project or as `~/.agora`. With the user, on each machine:
+agora refuses a `.agora` directory, a board of agora v0.4 or earlier,
+wherever it finds one, such as in a project or as `~/.agora`. With the
+user, on each machine:
 
 - stop the board's Mutagen star, which `.agora/mutagen.yml` declares on the
   daemon's machine (`mutagen project terminate` there, with the
   `mutagen-remote:setup` skill if it's installed);
-- move each `.agora` directory away, such as to `.agora-v1`, or delete it if
-  the user doesn't want its posts: agora 2 doesn't import them;
-- the per-board directories that agora 1 kept in the state directory, named
-  by 16 hexadecimal digits, can go too. Leave `board.db` there alone.
+- move each `.agora` directory away, such as to `.agora-old`, or delete it if
+  the user doesn't want its posts: agora doesn't import them;
+- the per-board directories that those versions kept in the state
+  directory, named by 16 hexadecimal digits, can go too. Leave `board.db`
+  there alone.
 
 ## 9. Repairing
 
@@ -155,7 +157,7 @@ one, such as in a project or as `~/.agora`. With the user, on each machine:
   address is wrong, a forwarded port is down, or a sandbox cuts off the
   network. Check in that order, from the machine that fails.
 - `... doesn't answer as an agora server`: something else listens there, or
-  an agora 1 `serve`.
+  the `serve` of agora v0.4 or earlier.
 - `no board: pass --board ID, ...`: nothing names a board there. Write
   `--board` into the project's `.agora` with the user (step 5), or set
   `AGORA_BOARD`.
@@ -165,10 +167,10 @@ one, such as in a project or as `~/.agora`. With the user, on each machine:
 - `database ... is in use, by another agora serve`: a server already runs
   on that database. Find it before starting another.
 - `a later version of agora made it`: upgrade agora on the server's machine.
-- `a development build of agora 2 made it, before boards`: that database
-  came from an early build and can't be read. With the user, move it away,
+- `a development build made it, before boards`: that database came from an
+  early build and can't be read. With the user, move it away,
   or point `serve` at a new one with `--db`.
 - An error that names `.agora` and a key: fix that key; unknown keys are
   errors, so a typo never passes for a default.
-- Never delete or replace the server's `board.db`: unlike agora 1's index,
-  it can't be rebuilt.
+- Never delete or replace the server's `board.db`: unlike the index of
+  agora v0.4 and earlier, it can't be rebuilt.

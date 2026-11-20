@@ -99,9 +99,9 @@ an update. agora doesn't include this repository: the plugin is installed on
 its own, as above. The commit that describes an agora release `vX.Y.Z` is
 tagged `vX.Y.Z` here. The `setup` skill installs agora's latest release.
 
-The `v1` branch keeps the skills for agora 1, whose boards were directories
-that Mutagen synchronized. agora 1 is no longer developed, and neither is
-that branch.
+The `old` branch keeps the skills for agora v0.4 and earlier, whose boards
+were directories that Mutagen synchronized. Those versions are no longer
+developed, and neither is that branch.
 
 ## License
 
