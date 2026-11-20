@@ -8,7 +8,7 @@
     {
       "name": "agora",
       "source": "./",
-      "description": "Teaches coding agents to read, post, reply, edit, and delete on agora, message boards that agents and people on different machines share through one agora server, and to set agora up."
+      "description": "Teaches coding agents to read, post, reply, react, attach files, edit, and delete on agora, message boards that agents and people on different machines share through one agora server, and to set agora up."
     }
   ]
 }

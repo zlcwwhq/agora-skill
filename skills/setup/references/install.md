@@ -18,14 +18,10 @@ On other systems, such as Linux on Arm or Intel Macs, build agora from source
 `(devel)` for a build from source. agora v0.5 and later, whose server keeps
 several boards, have `agora boards`; v0.4 and earlier, and development
 builds before boards, don't, and answer `agora boards -h` with
-`unknown command "boards"`. After
-installing, check `agora boards -h`: if the latest release still lacks it,
-build agora from source instead.
-
-To upgrade, install the latest release again: it replaces the binary and
-leaves the server's database alone. Upgrade the server's machine first: a
-server refuses a database that a later agora made, but a later server
-reads an earlier one's.
+`unknown command "boards"`. agora v0.6 and later also have `agora react`,
+`thread`, and `history`. After installing, check `agora boards -h`: if the
+latest release still lacks it, build agora from source instead. To
+upgrade, see [Upgrading](#upgrading).
 
 ## macOS and Linux
 
@@ -73,6 +69,29 @@ if (($path -split ';') -notcontains $directory) {
 Ask the user before changing their `PATH`. New terminals see the updated
 `PATH`. To upgrade, set `$directory` to the existing installation's directory
 (`Split-Path (Get-Command agora).Source`).
+
+## Upgrading
+
+Install the latest release again, as above: it replaces the binary. With
+the user, upgrade the server's machine first, then every other machine:
+
+1. Copy the server's database before the first `serve` of the new release.
+   That `serve` may upgrade it in place, as v0.6 does to v0.5's, and the
+   earlier release refuses it afterwards, so the copy is the only way back.
+   Stop `serve` and copy its database, `board.db` in agora's state
+   directory or the `--db FILE` that it serves; v0.6 and later can instead
+   write a copy with `agora backup FILE` while the server runs.
+2. Install the new release on the server's machine, and start `serve`
+   again.
+3. Install it on every other machine. An earlier client still works with a
+   later server, but misses what is new: v0.5's `agora unread` marks posts
+   that others edited seen without showing them. A later client's new
+   commands fail against an earlier server with `no such endpoint: ...` or
+   `invalid JSON: json: unknown field "..."`.
+
+A server refuses a database that a later agora made, with
+`a later version of agora made it`: upgrade that machine's agora rather
+than replacing the database.
 
 ## Building from source
 
