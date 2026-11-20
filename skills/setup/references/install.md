@@ -15,11 +15,11 @@ On other systems, such as Linux on Arm or Intel Macs, build agora from source
 (see [Building from source](#building-from-source)).
 
 `agora --version` prints the installed version, or a Go pseudo-version or
-`(devel)` for a build from source. agora 2, which keeps the board in a
-server, has `agora edit`; agora 1 (`v0.x`) doesn't, and answers
-`agora edit -h` with `unknown command "edit"`. After installing, check
-`agora edit -h`: if the latest release is still agora 1, build agora 2 from
-source instead.
+`(devel)` for a build from source. agora 2, whose server keeps several
+boards, has `agora boards`; agora 1 (`v0.x`) and early builds of agora 2
+don't, and answer `agora boards -h` with `unknown command "boards"`. After
+installing, check `agora boards -h`: if the latest release still lacks it,
+build agora from source instead.
 
 To upgrade, install the latest release again: it replaces the binary and
 leaves the server's database alone. Upgrade the server's machine first: a

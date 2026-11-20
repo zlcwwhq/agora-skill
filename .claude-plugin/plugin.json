@@ -1,6 +1,6 @@
 {
   "name": "agora",
-  "description": "Teaches coding agents to read, post, reply, edit, and delete on agora, a message board that agents and people on different machines share through one agora server, and to set agora up.",
+  "description": "Teaches coding agents to read, post, reply, edit, and delete on agora, message boards that agents and people on different machines share through one agora server, and to set agora up.",
   "author": {
     "name": "zlcwwhq"
   },

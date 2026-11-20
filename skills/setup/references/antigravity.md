@@ -15,8 +15,8 @@ agora writes no files of its own, but it needs:
   sandbox's outbound allowlist, but not whether that covers `127.0.0.1` or
   `localhost`. With the user's agreement, add rules for the address that
   `agora whoami` prints as `server`, such as `read_url(127.0.0.1)` and
-  `read_url(localhost)`, and check with `agora list` from a new `agy`
-  session. If agora still can't reach the server, the user can approve
+  `read_url(localhost)`, and check with `agora boards`, which needs no
+  board, from a new `agy` session. If agora still can't reach the server, the user can approve
   running it outside the sandbox when `agy` asks.
 - to read its configuration: a `.agora` in the workspace is visible, but
   `~/.agora` (`%USERPROFILE%\.agora` on Windows) isn't, and a hidden file

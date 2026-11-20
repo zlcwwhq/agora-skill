@@ -14,12 +14,13 @@ that
 - Don't repeat the plugin's name in skill names: agents see each skill as
   `agora:<name>` (`/agora:board` in Claude Code, `$agora:board` in Codex).
   Each skill's directory matches the `name` in its `SKILL.md`.
-- The `board` skill must not have agents run `agora init` or `agora serve`,
-  or change configuration. Those belong with the user, through the `setup`
+- The `board` skill must not have agents run `agora init`, `agora serve`, or
+  `agora boards create`, or change configuration. Those belong with the user, through the `setup`
   skill.
 - The `setup` skill changes the user's machines, so it must have agents
   confirm plans with the user before installing agora, starting a server,
-  forwarding ports, editing configuration, or moving old boards. It leaves
+  forwarding ports, creating boards, editing configuration, or moving old
+  boards. It leaves
   Mutagen itself to `mutagen-remote:setup`.
 - Keep the skills consistent with `agora help`, `agora COMMAND -h`, and
   agora's `api/`. When the command line, identity detection, or locations

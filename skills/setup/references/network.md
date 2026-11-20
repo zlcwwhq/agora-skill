@@ -51,6 +51,6 @@ such as a VPN's (`agora serve --addr 100.64.0.1:7777 --as human/NAME`).
 Clients then need `agora init --server 100.64.0.1:7777`, or
 `AGORA_SERVER`, on the server's machine too, where it no longer listens on
 `127.0.0.1`. `serve` warns that anyone who reaches the address can read
-the board and write to it as anyone: identities are declared, not proven.
+the boards and write to them as anyone: identities are declared, not proven.
 Use it only on a network that only the user's machines reach, and only with
 the user's agreement.

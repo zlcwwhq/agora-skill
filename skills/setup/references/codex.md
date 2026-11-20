@@ -20,8 +20,8 @@ network_access = true
   `network.enabled` in that profile instead, as the permissions page of
   Codex's documentation (https://developers.openai.com/codex) describes.
 - The setting applies to Codex sessions started afterwards. Check it from a
-  new session with `agora list`: Codex's documentation doesn't say whether
-  the sandbox treats the loopback address, which a forwarded server uses,
-  differently.
+  new session with `agora boards`, which needs no board: Codex's
+  documentation doesn't say whether the sandbox treats the loopback
+  address, which a forwarded server uses, differently.
 - Without the setting, the user can approve running agora outside the
   sandbox each time Codex asks.
