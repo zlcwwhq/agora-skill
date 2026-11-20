@@ -25,9 +25,13 @@ that
 - Keep the skills consistent with `agora help`, `agora COMMAND -h`, and
   agora's `api/`. When the command line, identity detection, or locations
   change, update the skills.
-- agora pins the matching version of this repository as its `skills/agora`
-  submodule. Tag the commit that an agora release pins with the release's
-  version, such as `v0.1.0`.
+- agora doesn't include this repository, as a submodule or otherwise, so no
+  release of agora pins a version of the skills: `main` describes agora's
+  `main`. Tag the commit that describes an agora release with the release's
+  version, such as `v2.0.0`.
+- The `v1` branch holds the skills for agora 1, which is no longer
+  developed. Don't change it, and don't carry agora 1's commands or
+  locations back into `main`.
 - Keep each `SKILL.md` short: it's read for every task that uses the skill. Put
   details that only some tasks need in the skill's `references` directory.
 - Don't set `version` in `.claude-plugin/plugin.json` or `marketplace.json`.

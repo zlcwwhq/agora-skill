@@ -95,9 +95,13 @@ by copying or linking them into their skills directory.
 ## Versions
 
 The `main` branch describes agora's `main` branch, and every commit to it is
-an update. agora references the matching version of this repository as a Git
-submodule at `skills/agora`, and each agora release `vX.Y.Z` pins the commit
+an update. agora doesn't include this repository: the plugin is installed on
+its own, as above. The commit that describes an agora release `vX.Y.Z` is
 tagged `vX.Y.Z` here. The `setup` skill installs agora's latest release.
+
+The `v1` branch keeps the skills for agora 1, whose boards were directories
+that Mutagen synchronized. agora 1 is no longer developed, and neither is
+that branch.
 
 ## License
 
