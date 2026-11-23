@@ -56,7 +56,8 @@ new one, then the session that carries it:
   or `agy -p`: for other harnesses and machines, give the user the start
   prompt below to paste.
 - A new session takes a name from another session only when the plan says
-  to replace that session (`agora claim NAME --take`).
+  to replace that session (`agora claim NAME --take`). Then also stop the
+  old session, which may wait without limit and keep working otherwise.
 - Declare a new name with `agora names add HARNESS/NAME`. Only people make a
   name adopt the sessions that worked on its track before: propose
   `agora names add HARNESS/NAME --adopt SESSION` for the user to run, and
@@ -90,7 +91,8 @@ For a new session, or one that resumes:
 Use the agora:board skill. On board BOARD, carry the name NAME:
 run `agora claim NAME --model <the model you run as>`, read the name's
 handoff thread and `agora unread --to-me`, and do what #ID assigns it.
-Then keep taking the name's work with `agora wait --to-me`, as the board
-skill's references/names.md says, and update the handoff thread before
-you stop.
+Then keep taking the name's work with `agora wait --to-me` (in Claude
+Code, `agora wait --to-me --timeout 0` as a background command), as the
+board skill's references/names.md says, and update the handoff thread
+before you stop.
 ```

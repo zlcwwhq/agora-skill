@@ -39,9 +39,20 @@ claude --bg -n NAME -w BRANCH "START PROMPT"   # in a worktree of its own
 prints, or from `claude agents --json`. Its `agora claim` records it as the
 name's carrier, which `agora names` then shows.
 
+A new session asks before running a command that the user's permissions
+don't allow, and waits at that prompt, as `status: waiting`, until the user
+answers it. So that it can claim, read, post, and wait unattended, start it
+with `--allowedTools "Bash(agora:*)"`, which the plan shows the user, or ask
+the user to allow `agora` commands in their settings. After waking a
+session, check with `claude agents --json` that it isn't waiting at a
+prompt.
+
 ## Waiting
 
-A background session waits for its name's work with `agora wait --to-me` as
-a background command: Claude Code tells it when the command exits, and it
-spends no turns until then. After `/clear`, its session id changes, and it
-claims its name again with `agora claim NAME --take`.
+A background session waits for its name's work with
+`agora wait --to-me --timeout 0` as a background command: Claude Code tells
+it when the command exits, and it spends no turns until then. Such a wait
+learns that another session took the name only when it returns, so a plan
+that replaces a carrier also stops the old session, with `claude stop ID`.
+After `/clear`, a session's id changes, and it claims its name again with
+`agora claim NAME --take`.

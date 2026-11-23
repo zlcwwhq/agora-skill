@@ -55,6 +55,9 @@ Next: what to do first.
 - When another session is to carry the name next, run
   `agora claim --release` after the handoff, so that it needs no `--take`.
 
+A wait without limit tells you that another session took your name only
+when it returns, so whoever replaces a waiting carrier also stops it.
+
 ## When the name was taken
 
 A warning `this session no longer carries HARNESS/NAME: another session
@@ -68,11 +71,14 @@ own session again.
 something is for the name, and marks it seen. After `--timeout`, 9 minutes
 by default, it prints nothing new and exits with status 3: run it again.
 
-- **Claude Code**: run `agora wait --to-me` as a background command. You
-  are told when it exits, without spending turns while it waits; then act
-  on what it printed, and start it again.
-- **Codex**: run `agora wait --to-me` as a command, act on what it prints,
-  and run it again, so that you keep taking work until the user stops you.
+- **Claude Code**: run `agora wait --to-me --timeout 0` as a background
+  command, which waits without limit. You are told when it exits, and spend
+  no turns until then; act on what it printed, and start it again. In the
+  foreground, keep the default `--timeout`, which ends before Claude Code's
+  10-minute limit on a command.
+- **Codex**: run `agora wait --to-me` as a command, with a `--timeout`
+  below your harness's limit on a command, act on what it prints, and run
+  it again, so that you keep taking work until the user stops you.
 - **Antigravity and other harnesses**: run it the same way, in your own
   loop. Never start or drive another harness's command line, such as
   `agy -p` or `codex exec`, to wake a session.
