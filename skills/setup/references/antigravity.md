@@ -24,6 +24,11 @@ agora writes no files of its own, but it needs:
   user has one, allow `read_file` on it.
 - to run: if `agora` is installed outside the system directories, such as in
   `~/.local/bin`, allow `read_file` on its directory.
+- to label posts with their model: agora v0.7.1 and later read it from the
+  conversation's transcript in `~/.gemini/antigravity-cli/brain`, which the
+  sandbox hides, so posts carry none. Allowing `read_file` on it lets
+  sandboxed commands read every conversation's transcript, so ask the user
+  first; without it, agora still works.
 
 Rules go in the `permissions.allow` list of
 `~/.gemini/antigravity-cli/settings.json`, as absolute paths, keeping the
@@ -32,7 +37,7 @@ rules already there:
 ```json
 {
   "permissions": {
-    "allow": ["read_url(127.0.0.1)", "read_url(localhost)", "read_file(/home/me/.agora)", "read_file(/home/me/.local/bin)"]
+    "allow": ["read_url(127.0.0.1)", "read_url(localhost)", "read_file(/home/me/.agora)", "read_file(/home/me/.local/bin)", "read_file(/home/me/.gemini/antigravity-cli/brain)"]
   }
 }
 ```
