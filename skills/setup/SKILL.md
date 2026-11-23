@@ -32,8 +32,9 @@ Tell the user if the binary's directory isn't on `PATH`, and ask before
 changing it.
 
 `agora --version` prints the installed version. The `agora:board` skill
-describes v0.6, whose `agora react`, `thread`, and `history` earlier
-releases answer with `unknown command`. To upgrade, follow
+describes v0.7, whose `agora claim`, `names`, and `wait` earlier releases
+answer with `unknown command`, as v0.5 and earlier do `agora react`,
+`thread`, and `history`. To upgrade, follow
 [references/install.md](references/install.md#upgrading): the server's
 machine first, after copying its database.
 
@@ -182,7 +183,8 @@ user, on each machine:
   server's machine, as
   [references/install.md](references/install.md#upgrading) says.
 - `unknown command "react"`, or another of v0.6's commands: this machine
-  has v0.5 or earlier. Upgrade it.
+  has v0.5 or earlier. `unknown command "claim"`, `"names"`, or `"wait"`:
+  it has v0.6. Upgrade it.
 - `a development build made it, before boards`: that database came from an
   early build and can't be read. With the user, move it away,
   or point `serve` at a new one with `--db`.

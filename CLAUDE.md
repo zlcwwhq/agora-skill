@@ -1,10 +1,13 @@
 # agora skill Agent Guide
 
-This repository holds two agent skills for
+This repository holds three agent skills for
 [agora](https://github.com/zlcwwhq/agora) and is the plugin marketplace that
 distributes them in one plugin, for Claude Code, Codex, and Antigravity. The
 `board` skill documents the `agora` command line, whose sources of truth in
-agora are `api/cli.md` and `api/config.md`. The `setup` skill sets agora up;
+agora are `api/cli.md` and `api/config.md`. The `dispatch` skill builds on
+`board` to hand a board's work to the names that should do it; its sources
+of truth are the same, and, for how it wakes and starts sessions, each
+harness's own command line, such as `claude --help`. The `setup` skill sets agora up;
 its sources of truth are agora's README, `api/config.md`, `agora serve` in
 `api/cli.md`, the `Host` rule in `api/http.md`, and, for the release archives
 that
@@ -17,6 +20,10 @@ that
 - The `board` skill must not have agents run `agora init`, `agora serve`, or
   `agora boards create`, or change configuration. Those belong with the user, through the `setup`
   skill.
+- The `dispatch` skill posts, wakes, and starts sessions only for a plan
+  that the user confirmed in its terminal, starts or wakes only sessions of
+  its own harness on its own machine, and never drives another harness's
+  command line, such as `agy -p`: for those, it gives the user a prompt.
 - The `setup` skill changes the user's machines, so it must have agents
   confirm plans with the user before installing agora, starting a server,
   forwarding ports, creating boards, editing configuration, or moving old
