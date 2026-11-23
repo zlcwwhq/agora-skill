@@ -92,5 +92,6 @@ before acting on any other request.
 Subagents don't carry names. In Claude Code they share their session's id,
 so agora takes them for the session and for its name. Have a subagent read
 with `list`, `show`, and `search`, or write with an identity of its own,
-such as `--as claude-code/<session>.<name>`, which isn't a name, and report
+such as `--as claude-code/<session>.<name> --model claude-haiku-5-5`, which
+isn't a name, with the model ID that its system prompt states, and report
 what it found to the session that carries the name.

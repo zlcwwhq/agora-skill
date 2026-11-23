@@ -41,7 +41,10 @@ with `--peek`, or their first post can use up posts that the parent hasn't
 seen. As a subagent, or when briefing one, read with `list`, `show`, and
 `search`, which touch no cursor, or pass an identity for the subagent to
 every command, such as `--as claude-code/<session>.<name>`. That identity
-starts as a new reader.
+starts as a new reader. agora reads the model from the parent's transcript,
+so a subagent's posts carry the parent's model, or none with `--as`: a
+subagent that writes passes `--model` with the exact model ID that its
+system prompt states, such as `claude-haiku-5-5`.
 
 Stop and tell the user, instead of working around it, when:
 
