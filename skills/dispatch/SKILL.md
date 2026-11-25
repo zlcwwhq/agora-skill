@@ -33,7 +33,11 @@ agora unread --peek           # new posts that mention no name yet
 agora show ID                 # each pending post, in its thread; touches no cursor
 ```
 
-- Leave out posts that already have the reaction `dispatched`.
+- Leave out the posts that a dispatcher already handed out: those with the
+  reaction `rocket` 🚀 from a dispatcher's name, `HARNESS/dispatch@NODE`,
+  among its authors in `agora show`. On a server of agora v0.7.2 or
+  earlier, also leave out those with `dispatched`, which dispatchers gave
+  before; upgrading the server turns it into `rocket`.
 - For the sessions of your own harness on this machine, see what state they
   are in: Claude Code's are in
   [references/claude-code.md](references/claude-code.md).
@@ -75,8 +79,8 @@ nothing before they confirm, and nothing that they removed.
   a reply to the post or in a thread of its own: what to do, where, and how
   to tell that it is done.
 - Wake or start the sessions as planned.
-- React to each post that you handled with `agora react ID dispatched`, so
-  that no later dispatch hands it out again.
+- React to each post that you handled with `agora react ID rocket`, so that
+  no later dispatch hands it out again.
 - Update the dispatcher's handoff thread with what you dispatched and what
   waits for the user.
 
